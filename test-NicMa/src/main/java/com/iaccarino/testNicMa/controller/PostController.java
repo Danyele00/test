@@ -36,7 +36,7 @@ public class PostController {
     }
 
     //Importa una lista da url e inserisce nel DB
-    @GetMapping("/import")
+    @PostMapping("/import")
     public String importPosts() throws IOException {
 
         RestTemplate restTemplate = new RestTemplate();
@@ -68,7 +68,7 @@ public class PostController {
 
 
     //Inserimento a DB da String
-    @GetMapping("/saveCustomJson")
+    @PostMapping("/saveCustomJson")
     public String salvaPostJson(@ModelAttribute Post post) throws IOException {
 
         String postJson = """
@@ -87,7 +87,7 @@ public class PostController {
     }
 
     //Inserimento a DB da file .json
-    @GetMapping("/importCustomJsonFile")
+    @PostMapping("/importCustomJsonFile")
     public String salvaPostJsonFile(@ModelAttribute Post post) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();

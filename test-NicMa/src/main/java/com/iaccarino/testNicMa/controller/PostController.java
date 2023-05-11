@@ -20,16 +20,20 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
 public class PostController {
 
     @Autowired
     private PostRepository postRepository;
 
 
+    @RequestMapping("/")
+    public String home() {
+        return "home";
+    }
+
     //Lista di tutti i post
     @GetMapping("/posts")
-    public String home(Model model) {
+    public String listaPosts(Model model) {
         List<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
         return "home";

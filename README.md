@@ -15,7 +15,7 @@ Per configurare il database, segui questi passaggi:
 
 - Crea un database MySQL e un utente con i permessi per accedervi
 
-## Modifica le seguenti proprietà nel file application.properties nella directory src/main/resources per farle corrispondere al tuo database e al tuo utente:
+## Modifica le seguenti proprietà nel file application.properties:
 - spring.datasource.url=jdbc:mysql://localhost:3306/db_name
 - spring.datasource.username=db_user
 - spring.datasource.password=db_password

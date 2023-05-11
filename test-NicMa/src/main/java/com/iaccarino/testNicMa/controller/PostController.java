@@ -1,10 +1,13 @@
 package com.iaccarino.testNicMa.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iaccarino.testNicMa.model.Post;
 import com.iaccarino.testNicMa.repository.PostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,9 +81,9 @@ public class PostController {
         String postJson = """
                 {
                   "userId": 1,
-                  "id": 1,
-                  "title": "post passato da Stringa",
-                  "body": "post passato da Stringa"
+                  "id": null,
+                  "title": "post passato da Stringa con id null",
+                  "body": "post passato da Stringa con id null"
                 }""";
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -91,12 +94,15 @@ public class PostController {
     }
 
     //Inserimento a DB da file .json
-    @PostMapping("/importCustomJsonFile")
+    @GetMapping("/importCustomJsonFile")
     public String salvaPostJsonFile(@ModelAttribute Post post) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        post = objectMapper.readValue(new File("src/main/resources/static/postJsonFile.json"), Post.class);
+        post = objectMapper.readValue(new File("static/postJsonFile.json"), Post.class);
+
+
         postRepository.save(post);
+
         return "redirect:/posts";
     }
 

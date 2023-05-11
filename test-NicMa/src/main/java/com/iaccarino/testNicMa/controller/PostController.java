@@ -99,8 +99,6 @@ public class PostController {
 
         ObjectMapper objectMapper = new ObjectMapper();
         post = objectMapper.readValue(new File("C:\\workspaces Intellij\\testNicMa\\test-NicMa\\src\\main\\resources\\static\\postJsonFile.json"), Post.class);
-
-
         postRepository.save(post);
 
         return "redirect:/posts";

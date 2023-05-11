@@ -21,12 +21,12 @@ Per configurare il database, segui questi passaggi:
 - spring.datasource.password=db_password
 
 ## Assicurati che il driver MySQL sia presente nel file pom.xml nella directory principale del progetto:
-'''maven
+```pom.xml
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
 </dependency>
-'''
+```
 
 ## Esecuzione dell'applicazione
 Per eseguire l'applicazione, segui questi passaggi:

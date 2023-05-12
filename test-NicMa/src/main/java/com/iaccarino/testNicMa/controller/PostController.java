@@ -43,8 +43,8 @@ public class PostController {
     }
 
     //Importa una lista da url e inserisce nel DB
-    @PostMapping("/import")
-    public String importPosts() throws IOException {
+    @GetMapping("/import")
+    public String importPosts() {
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Post[]> response = restTemplate.getForEntity(

@@ -2,6 +2,11 @@ package com.iaccarino.testNicMa.model;
 
 import jakarta.persistence.*;
 
+/*
+Gestione layer model:
+ Creazione della tabella Post mediante @Entity
+ */
+
 @Entity
 @Table(name = "POST")
 public class Post {

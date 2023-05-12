@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iaccarino.testNicMa.model.Post;
 import com.iaccarino.testNicMa.repository.PostRepository;
 
+import com.iaccarino.testNicMa.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
@@ -22,27 +23,30 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/*
+Gestione dello strato Controller
+    Sei end point per l'inserimento di dati (json) nel database
+    - GET /  - home page, tabella con tutti i post salvati nel database in formato JSON.
+    - GET /import - esegue una chiamata REST all'indirizzo https://jsonplaceholder.typicode.com/posts per recuperare una lista di post e salvarli nel database.
+    - GET /new - inserimento nuovo elemento da form
+    - POST /new - crea un nuovo elemento post e lo salva nel database
+    - POST /saveCustomJson - inserimento elemento nel database da una stringa (json)
+    - GET /importJsonFile - inserimento elemento nel database da un file .json
+    - GET /posts - restituisce tutti i post salvati nel database in formato JSON.
+ */
 @Controller
 public class PostController {
 
-    @Autowired
-    private PostRepository postRepository;
 
+    @Autowired
+    private PostService postService;
 
     @RequestMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("posts", postService.getAllPosts());
         return "home";
     }
 
-    //Lista di tutti i post
-    @GetMapping("/posts")
-    public String listaPosts(Model model) {
-        List<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
-        return "home";
-    }
-
-    //Importa una lista da url e inserisce nel DB
     @GetMapping("/import")
     public String importPosts() throws IOException {
 
@@ -53,10 +57,10 @@ public class PostController {
         Post[] posts = response.getBody();
 
         for (Post post : posts) {
-            postRepository.save(post);
+            postService.salvaPost(post);
         }
 
-        return "redirect:/posts";
+        return "redirect:/";
     }
 
     //Creazione elemento dal form
@@ -69,8 +73,8 @@ public class PostController {
     //Inserimento a DB dal Model
     @PostMapping("/new")
     public String salvaPost(@ModelAttribute Post post) {
-        postRepository.save(post);
-        return "redirect:/posts";
+        postService.salvaPost(post);
+        return "redirect:/";
     }
 
 
@@ -89,21 +93,21 @@ public class PostController {
         ObjectMapper objectMapper = new ObjectMapper();
         post = objectMapper.readValue(postJson, Post.class);
 
-        postRepository.save(post);
-        return "redirect:/posts";
+        postService.salvaPost(post);
+        return "redirect:/";
     }
 
     //Inserimento a DB da file .json
-    @GetMapping("/importCustomJsonFile")
+    @GetMapping("/importJsonFile")
     public String salvaPostJsonFile(@ModelAttribute Post post) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
         List<Post> posts= objectMapper.readValue(new File("C:\\workspaces Intellij\\testNicMa\\test-NicMa\\src\\main\\resources\\static\\postJsonFile.json"), new TypeReference<List<Post>>(){});
 
         for(Post elemento : posts)
-            postRepository.save(elemento);
+            postService.salvaPost(elemento);
 
-        return "redirect:/posts";
+        return "redirect:/";
     }
 
 

@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+Gestione strato di servizio
+     Implementazione nuove logiche business con relativi metodi,
+     Injection di postRepository per operazioni Crud
+ */
 @Service
 public class PostService {
 
@@ -16,7 +21,6 @@ public class PostService {
     public void salvaPost(Post post){
         postRepository.save(post);
     }
-
 
     public List<Post> getAllPosts() {
 

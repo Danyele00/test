@@ -4,7 +4,7 @@ import com.iaccarino.testNicMa.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /*
-Gestione del layer repository
+Gestione dello Strato Repository
  Acquisizione dei metodi per le operazioni CRUD forniti da JpaRepository.
  */
 public interface PostRepository extends JpaRepository<Post,Integer> {

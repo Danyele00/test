@@ -3,7 +3,7 @@ package com.iaccarino.testNicMa.model;
 import jakarta.persistence.*;
 
 /*
-Gestione layer model:
+Gestione dello strato Model:
  Creazione della tabella Post mediante @Entity
  */
 

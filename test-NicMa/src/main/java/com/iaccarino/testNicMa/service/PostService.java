@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /*
-Gestione strato di servizio
-     Implementazione nuove logiche business con relativi metodi,
+Gestione dello strato Service
+     Implementazione logiche business con relativi metodi,
      Injection di postRepository per operazioni Crud
  */
 @Service

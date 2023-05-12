@@ -1,7 +1,14 @@
-
-{
-  "userId": 2,
-  "id": 4,
-  "title": "post1 json da file",
-  "body": "post1 json da file"
-}
+[
+  {
+    "userId": 2,
+    "id": 4,
+    "title": "post1 json da file",
+    "body": "post1 json da file"
+  },
+  {
+    "userId": 2,
+    "id": 5,
+    "title": "post2 json da file",
+    "body": "post2 json da file"
+  }
+]

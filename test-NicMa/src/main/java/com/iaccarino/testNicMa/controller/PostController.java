@@ -32,7 +32,6 @@ Gestione dello strato Controller
     - POST /new - crea un nuovo elemento post e lo salva nel database
     - POST /saveCustomJson - inserimento elemento nel database da una stringa (json)
     - GET /importJsonFile - inserimento elemento nel database da un file .json
-    - GET /posts - restituisce tutti i post salvati nel database in formato JSON.
  */
 @Controller
 public class PostController {

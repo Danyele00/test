@@ -40,7 +40,7 @@ Per eseguire l'applicazione, segui questi passaggi:
 L'applicazione ha sei endpoint:
 
 - GET /posts restituisce tutti i post salvati nel database in formato JSON.
-- POST /import esegue una chiamata REST all'indirizzo https://jsonplaceholder.typicode.com/posts per recuperare una lista di post e li salva nel database.
+- GET /import esegue una chiamata REST all'indirizzo https://jsonplaceholder.typicode.com/posts per recuperare una lista di post e li salva nel database.
 - GET /new inserimento nuovo elemento da form 
 - POST /new crea un nuovo elemento post e lo salva nel database
 - POST /saveCustomJson inserimento elemento nel database da una stringa (json)

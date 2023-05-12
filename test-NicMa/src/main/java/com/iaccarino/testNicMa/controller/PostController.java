@@ -43,7 +43,7 @@ public class PostController {
     }
 
     //Importa una lista da url e inserisce nel DB
-    @PostMapping("/import")
+    @GetMapping("/import")
     public String importPosts() throws IOException {
 
         RestTemplate restTemplate = new RestTemplate();

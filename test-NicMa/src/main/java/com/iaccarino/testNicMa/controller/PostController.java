@@ -94,12 +94,14 @@ public class PostController {
     }
 
     //Inserimento a DB da file .json
-    @PostMapping("/importCustomJsonFile")
+    @GetMapping("/importCustomJsonFile")
     public String salvaPostJsonFile(@ModelAttribute Post post) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        post = objectMapper.readValue(new File("C:\\workspaces Intellij\\testNicMa\\test-NicMa\\src\\main\\resources\\static\\postJsonFile.json"), Post.class);
-        postRepository.save(post);
+        List<Post> posts= objectMapper.readValue(new File("C:\\workspaces Intellij\\testNicMa\\test-NicMa\\src\\main\\resources\\static\\postJsonFile.json"), new TypeReference<List<Post>>(){});
+
+        for(Post elemento : posts)
+            postRepository.save(elemento);
 
         return "redirect:/posts";
     }

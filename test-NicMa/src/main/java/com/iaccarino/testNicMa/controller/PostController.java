@@ -44,7 +44,7 @@ public class PostController {
 
     //Importa una lista da url e inserisce nel DB
     @GetMapping("/import")
-    public String importPosts() {
+    public String importPosts() throws IOException {
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Post[]> response = restTemplate.getForEntity(
@@ -93,16 +93,13 @@ public class PostController {
         return "redirect:/posts";
     }
 
-
-    //Lettura di un file .json e inserimento nel database.
-    @GetMapping("/importCustomJsonFile")
+    //Inserimento a DB da file .json
+    @PostMapping("/importCustomJsonFile")
     public String salvaPostJsonFile(@ModelAttribute Post post) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Post> posts = objectMapper.readValue(new File("C:\\workspaces Intellij\\testNicMa\\test-NicMa\\src\\main\\resources\\static\\postJsonFile.json"), new TypeReference<List<Post>>() {});
-
-        for(Post elemento : posts)
-            postRepository.save(elemento);
+        post = objectMapper.readValue(new File("C:\\workspaces Intellij\\testNicMa\\test-NicMa\\src\\main\\resources\\static\\postJsonFile.json"), Post.class);
+        postRepository.save(post);
 
         return "redirect:/posts";
     }

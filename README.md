@@ -39,12 +39,12 @@ Per eseguire l'applicazione, segui questi passaggi:
 ## Utilizzo dell'applicazione
 L'applicazione ha sei endpoint:
 
-- GET / - home page, tabella con tutti i post salvati nel database in formato JSON.
-- GET /import esegue una chiamata REST all'indirizzo https://jsonplaceholder.typicode.com/posts per recuperare una lista di post e salvarli nel database.
-- GET /new inserimento nuovo elemento da form 
-- POST /new crea un nuovo elemento post e lo salva nel database
-- POST /saveCustomJson inserimento elemento nel database da una stringa (json)
-- GET /importJsonFile inserimento elemento nel database da un file .json 
+    - GET /import - esegue una chiamata REST all'indirizzo https://jsonplaceholder.typicode.com/posts per recuperare una lista di post e salvarli nel database.
+    - GET /new - inserimento nuovo elemento da form
+    - POST /new - crea un nuovo elemento post e lo salva nel database
+    - POST /saveCustomJson - inserimento elemento nel database da una stringa (json)
+    - GET /importJsonFile - inserimento elemento nel database da un file .json
+    - GET /posts - restituisce tutti i post salvati nel database in formato JSON.
 
 Per testare l'applicazione, puoi utilizzare uno strumento come Postman per effettuare una chiamata GET e POST a http://localhost:8080/. Dovresti ricevere una risposte con lo status code 200.
 

@@ -44,7 +44,7 @@ L'applicazione ha sei endpoint:
 - GET /new inserimento nuovo elemento da form 
 - POST /new crea un nuovo elemento post e lo salva nel database
 - POST /saveCustomJson inserimento elemento nel database da una stringa (json)
-- GET /importCustomJsonFile inserimento elemento nel database da un file .json 
+- GET /importJsonFile inserimento elemento nel database da un file .json 
 
 Per testare l'applicazione, puoi utilizzare uno strumento come Postman per effettuare una chiamata GET e POST a http://localhost:8080/. Dovresti ricevere una risposte con lo status code 200.
 

@@ -17,7 +17,7 @@ Per configurare il database, segui questi passaggi:
 
 ## Modifica le seguenti proprietà nel file application.properties:
 ```application.properties.xml
-spring.datasource.url=jdbc:mysql://localhost:3306/db_name
+spring.datasource.url=jdbc:mysql://localhost:3306/testNicMa
 spring.datasource.username=db_user
 spring.datasource.password=db_password
 ```
